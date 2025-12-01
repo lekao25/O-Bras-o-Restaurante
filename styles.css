@@ -223,4 +223,23 @@ nav ul li a:hover { transform: scale(1.1); }
         align-items: center;
         gap: 25px;
     }
+/* Estilo do Botão de Menu (Hamburguer) */
+#menu-toggle {
+    display: none; /* Escondido por padrão */
+    order: 3; /* Ordem de exibição no cabeçalho */
+    background: none;
+    border: 2px solid var(--amarelo-rodape);
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0px 8px;
+    border-radius: 5px;
 }
+
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: block; /* Aparece em telas de celular */
+  }
+}
+
+
