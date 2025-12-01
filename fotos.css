@@ -75,26 +75,26 @@ main {
 .content-gallery p { font-size: 1em; margin-bottom: 0; }
 
 /* Imagens de fundo */
-.slide-image-1 { background-image: url('imagens/faxada.jpg'); }
-.slide-image-2 { background-image: url('imagens/forno\ frango\ assado.jpg'); }
-.slide-image-3 { background-image: url('imagens/forno\ assado.jpg'); }
-.slide-image-4 { background-image: url('imagens/farofa\ brasao.jpg'); }
-.slide-image-5 { background-image: url('imagens/maionese\ com\ palmito.jpg'); }
-.slide-image-6 { background-image: url('imagens/salpicao.jpg'); }
-.slide-image-7 { background-image: url('imagens/japa\ e\ patroa.png'); }
-.slide-image-8 { background-image: url('imagens/torresmo.jpg'); }
-.slide-image-9 { background-image: url('imagens/Prato\ brasao\ logo.jpg'); }
-.slide-image-10 { background-image: url('imagens/patroa\ e\ japa.jpg'); }
-.slide-image-11 { background-image: url('imagens/carbe\ de\ panela.jpg'); }
-.slide-image-12 { background-image: url('imagens/bife\ acebolado.jpg'); }
-.slide-image-13 { background-image: url('imagens/lasanha.jpg'); }
-.slide-image-14 { background-image: url('imagens/costelinha\ de\ porco.jpg'); }
-.slide-image-15 { background-image: url('imagens/feijoada.jpg'); }
-.slide-image-16 { background-image: url('imagens/carne\ assada.jpg'); }
-.slide-image-17 { background-image: url('imagens/costela\ assada.jpg'); }
-.slide-image-18 { background-image: url('imagens/marmitex\ a\ grega\ e\ espagueta.jpg'); }
-.slide-image-19 { background-image: url('imagens/marmitex\ a\ grega\ e\ espagueta.jpg'); }
-.slide-image-20 { background-image: url('imagens/marmitex\ a\ grega\ e\ espagueta.jpg'); }
+.slide-image-1 { background-image: url('faxada.jpg'); }
+.slide-image-2 { background-image: url('forno\ frango\ assado.jpg'); }
+.slide-image-3 { background-image: url('forno\ assado.jpg'); }
+.slide-image-4 { background-image: url('farofa\ brasao.jpg'); }
+.slide-image-5 { background-image: url('maionese\ com\ palmito.jpg'); }
+.slide-image-6 { background-image: url('salpicao.jpg'); }
+.slide-image-7 { background-image: url('japa\ e\ patroa.png'); }
+.slide-image-8 { background-image: url('torresmo.jpg'); }
+.slide-image-9 { background-image: url('Prato\ brasao\ logo.jpg'); }
+.slide-image-10 { background-image: url('patroa\ e\ japa.jpg'); }
+.slide-image-11 { background-image: url('carbe\ de\ panela.jpg'); }
+.slide-image-12 { background-image: url('bife\ acebolado.jpg'); }
+.slide-image-13 { background-image: url('lasanha.jpg'); }
+.slide-image-14 { background-image: url('costelinha\ de\ porco.jpg'); }
+.slide-image-15 { background-image: url('feijoada.jpg'); }
+.slide-image-16 { background-image: url('carne\ assada.jpg'); }
+.slide-image-17 { background-image: url('costela\ assada.jpg'); }
+.slide-image-18 { background-image: url('marmitex\ a\ grega\ e\ espagueta.jpg'); }
+.slide-image-19 { background-image: url('marmitex\ a\ grega\ e\ espagueta.jpg'); }
+.slide-image-20 { background-image: url('marmitex\ a\ grega\ e\ espagueta.jpg'); }
 
 /* Controles */
 .carousel-control {
@@ -125,3 +125,4 @@ main {
 @media (max-width: 480px) {
     .carousel-section { height: 320px; }
 }
+
