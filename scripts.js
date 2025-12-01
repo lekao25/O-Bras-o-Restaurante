@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
         carouselContainer.addEventListener('mouseleave', startAutoSlide);
     }
+    });
                                 // --- Ajuste automático para o cabeçalho fixo ---
 function ajustarPaddingDoCorpo() {
     const header = document.querySelector('.navbar');
