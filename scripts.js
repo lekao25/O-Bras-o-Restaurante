@@ -101,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 movePercentage = 100 / slidesPerView;
                 showSlides(currentStartIndex);
             }
-        });
 
         // Inicializa
         showSlides(0);
@@ -114,6 +113,22 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
         carouselContainer.addEventListener('mouseleave', startAutoSlide);
     }
+                                // --- Ajuste automático para o cabeçalho fixo ---
+function ajustarPaddingDoCorpo() {
+    const header = document.querySelector('.navbar');
+    if (header) {
+        const headerHeight = header.offsetHeight;
+        document.body.style.paddingTop = headerHeight + 'px';
+    }
+}
+
+// Ajusta o padding quando a página carrega
+window.addEventListener('load', ajustarPaddingDoCorpo);
+
+// Ajusta o padding caso o tamanho da tela mude (ex: virar o celular)
+window.addEventListener('resize', ajustarPaddingDoCorpo);
+}
 });
+
 
 
