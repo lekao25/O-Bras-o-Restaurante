@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2) Menu mobile (se existir) ---
+    // --- 2) Menu mobile ---
     const nav = document.querySelector('.navbar nav');
     const menuButton = document.getElementById('menu-toggle');
     if (menuButton && nav) {
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentStartIndex = 0;
         let movePercentage = 100 / slidesPerView;
 
-        const autoSlideDuration = 5000; // 5s
+        const autoSlideDuration = 5000;
         let autoSlideTimer;
 
         function startAutoSlide() {
@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             startAutoSlide();
         }
 
-        // Ajusta ao redimensionar
         window.addEventListener('resize', () => {
             const old = slidesPerView;
             slidesPerView = getSlidesPerView();
@@ -101,35 +100,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 movePercentage = 100 / slidesPerView;
                 showSlides(currentStartIndex);
             }
+        });
 
-        // Inicializa
         showSlides(0);
 
-        // Controles
         if (prevBtn) prevBtn.addEventListener('click', () => showSlides(currentStartIndex - 1));
         if (nextBtn) nextBtn.addEventListener('click', () => showSlides(currentStartIndex + 1));
 
-        // Pausa autoplay no hover
         carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
         carouselContainer.addEventListener('mouseleave', startAutoSlide);
     }
-    });
-                                // --- Ajuste automático para o cabeçalho fixo ---
-function ajustarPaddingDoCorpo() {
-    const header = document.querySelector('.navbar');
-    if (header) {
-        const headerHeight = header.offsetHeight;
-        document.body.style.paddingTop = headerHeight + 'px';
+
+    // --- Ajuste automático para o cabeçalho fixo ---
+    function ajustarPaddingDoCorpo() {
+        const header = document.querySelector('.navbar');
+        if (header) {
+            const headerHeight = header.offsetHeight;
+            document.body.style.paddingTop = headerHeight + 'px';
+        }
     }
-}
 
-// Ajusta o padding quando a página carrega
-window.addEventListener('load', ajustarPaddingDoCorpo);
-
-// Ajusta o padding caso o tamanho da tela mude (ex: virar o celular)
-window.addEventListener('resize', ajustarPaddingDoCorpo);
-}
+    window.addEventListener('load', ajustarPaddingDoCorpo);
+    window.addEventListener('resize', ajustarPaddingDoCorpo);
 });
-
-
-
