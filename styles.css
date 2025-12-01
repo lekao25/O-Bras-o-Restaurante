@@ -145,4 +145,88 @@ nav ul li a:hover { transform: scale(1.1); }
   background: none;
 }
 
+/* =============================================== */
+/* --- CÓDIGO DE RESPONSIVIDADE ADICIONADO --- */
+/* =============================================== */
 
+/* --- CSS para o Menu Hambúrguer --- */
+
+/* 1. Esconda o botão em telas grandes (desktop) */
+.menu-toggle-button {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* 2. Media Query: Estilos para tablets e celulares (até 768px) */
+@media (max-width: 768px) {
+    /* Esconde a navegação normal */
+    .navbar nav {
+        display: none;
+    }
+    
+    /* Mostra o botão hambúrguer */
+    .menu-toggle-button {
+        display: block;
+        order: 3; /* Muda a ordem para ele aparecer depois do logo */
+        margin-left: auto; /* Empurra os outros itens para a esquerda */
+    }
+
+    /* Esconde os botões de acessibilidade e social no menu principal para simplificar */
+    .navbar .acessibilidade-botoes,
+    .navbar .social-icons {
+        display: none;
+    }
+
+    /* Estilo do menu quando ele for aberto (via JavaScript) */
+    .navbar nav.active {
+        display: flex;
+        position: absolute;
+        top: 100%; /* Começa logo abaixo do header */
+        right: 0;
+        background-color: var(--vermelho-principal);
+        width: 250px; /* Largura do menu aberto */
+        border-top: 2px solid var(--amarelo-rodape);
+        box-shadow: -2px 2px 10px rgba(0,0,0,0.5);
+    }
+    
+    .navbar nav.active ul {
+        flex-direction: column; /* Links um abaixo do outro */
+        width: 100%;
+    }
+
+    .navbar nav.active ul li a {
+        padding: 15px 20px;
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+}
+
+/* --- Ajuste da Seção Hero (até 900px) --- */
+
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column; /* Empilha os itens (imagem abaixo do texto) */
+    text-align: center;
+    padding: 60px 20px; /* Ajusta o espaçamento para telas menores */
+  }
+
+  .content-left, .content-right {
+    max-width: 100%; /* Permite que ambos ocupem toda a largura */
+    text-align: center;
+  }
+
+  .content-right img {
+      margin-left: 0; /* Remove a margem da imagem */
+      margin-top: 30px; /* Adiciona um espaço acima da imagem */
+      max-width: 90%; /* Ajusta a imagem para não colar nas bordas */
+  }
+
+  .content-left h1 {
+      font-size: 2.5rem; /* Diminui um pouco o título */
+  }
+}
