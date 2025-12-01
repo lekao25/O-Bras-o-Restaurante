@@ -51,7 +51,7 @@ main {
     padding: 0;
     overflow: hidden;
     position: relative;
-    height: 600px;
+    height: 500px;
 }
 .carousel-container {
     height: 100%; width: 100%; position: relative; display: flex; transition: transform 0.3s ease-in-out;
@@ -125,6 +125,7 @@ main {
 @media (max-width: 480px) {
     .carousel-section { height: 320px; }
 }
+
 
 
 
