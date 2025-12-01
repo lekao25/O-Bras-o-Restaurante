@@ -1,0 +1,353 @@
+/* --- INÍCIO DA ATUALIZAÇÃO PARA ACESSIBILIDADE --- */
+
+:root {
+    /* Cores Padrão (Modo Claro) */
+    --vermelho-principal: rgb(224, 47, 47);
+    --amarelo-rodape: #ffe64d;
+    --cor-texto: #333;
+    --cor-texto-claro: #fff;
+    --cor-fundo: #ffffff; /* Fundo branco padrão */
+    --cor-card: #f9f9f9; /* Fundo leve para caixas/itens */
+}
+
+/* Variáveis para o Modo Escuro (Mais Escuro, como você pediu) */
+body.dark-mode {
+    --vermelho-principal: #8a1c1c; 
+    --amarelo-rodape: #cca300;
+    --cor-texto: #ffffff; 
+    --cor-texto-claro: #e0e0e0;
+    --cor-fundo: #000000; /* Preto Absoluto */
+    --cor-card: #111111; /* Cartões escuros */
+}
+
+body {
+    /* ... mantenha suas fontes e margens aqui, mas garanta estas duas linhas: */
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo); 
+    transition: background-color 0.3s, color 0.3s; /* Transição suave */
+}
+
+/* Estilo dos Botões de Acessibilidade */
+.acessibilidade-botoes {
+    display: flex;
+    gap: 5px;
+    margin-left: 20px;
+}
+
+.acessibilidade-botoes button {
+    background-color: var(--amarelo-rodape);
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333; 
+    font-size: 14px;
+}
+/* --- FIM DA ATUALIZAÇÃO PARA ACESSIBILIDADE --- */
+
+/* --- ESTILOS DO CABEÇALHO/NAVEGAÇÃO (Vermelho) --- */
+.navbar {
+    background-color: var(--vermelho-principal);
+    color: var(--cor-texto-claro);
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* --- A linha mágica que divide o header do body --- */
+    border-bottom:5px solid var(--amarelo-rodape); 
+    /* 2px: Define a espessura da linha (mude para 1px para ser mais fina) */
+    /* solid: Define o estilo da linha (pode ser 'dashed', 'dotted', etc.) */
+    /* #ccc: Define a cor (mude para preto (#000) ou a cor da sua marca) */
+
+    padding-bottom: 5px; /* Opcional: Adiciona um pequeno espaço entre o conteúdo do header e a borda */
+    /* Define o posicionamento fixo */
+    position: fixed;
+    
+    /* Garante que o header fique no topo */
+    top: 0;
+    
+    /* Estende o header por toda a largura */
+    left: 0;
+    right: 0; 
+    
+    /* Opcional: define uma largura, embora 100% seja o padrão com left/right 0 */
+    width: 100%; 
+    
+    /* Opcional, mas recomendado: Garante que o header fique por cima de outros elementos */
+    z-index: 1000; 
+    
+    /* Opcional: Adicione um fundo para que o conteúdo da página não apareça por trás */
+    color: white; /* Cor do texto, se for o caso */
+    padding: 10px 0; /* Ajuste o padding conforme necessário */
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar nav ul li a {
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    padding: 0 15px;
+    /* 1. Prepara o elemento para a transição suave */
+    transition: transform 0.3s ease-in-out;
+    /* Dica: Elementos 'inline' (como <a>) não aceitam 'transform' direito. 
+       É bom garantir que eles se comportem como 'inline-block' para a escala funcionar perfeitamente.
+    */
+    display: inline-block;
+}
+/* 2. Define a animação ao passar o mouse */
+nav ul li a:hover {
+    /* Aumenta o texto em 1.1 (10% maior) */
+    transform: scale(1.1); 
+    
+    /* Opcional: Você pode mudar a cor ou adicionar um sublinhado aqui também */
+    /* color: #FFD700; */
+}
+.social-icons a {
+    margin-left: 10px;
+}
+/* Estilize os ícones de forma apropriada */
+
+
+/* --- SEÇÃO PRINCIPAL (Vermelho) --- */
+.hero-section {
+    background-color: var(--vermelho-principal);
+    color: var(--cor-texto-claro);
+    padding: 80px 50px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.content-left {
+    flex: 1;
+    max-width: 50%; /* Limita o texto para não ficar muito largo */
+    text-align: center;
+}
+
+.content-left h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.content-left p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.content-right {
+    flex: 1;
+    text-align: right;
+}
+
+/* 1. ESTADO NORMAL: Garante que a transição seja suave e lenta */
+.content-right img {
+    /* ... (seus estilos de tamanho de imagem já definidos) ... */
+    
+    /* Configura a duração da transição. 0.3s é ideal para suavidade. */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* 2. ESTADO HOVER: O que acontece quando o mouse está sobre a imagem */
+.content-right img:hover {
+    /* Faz a imagem crescer 5% (zoom leve) */
+    transform: scale(1.05); 
+    
+    /* Aumenta a opacidade (deixa mais nítida/clara, ou menos escura se for o caso) */
+    opacity: 1; 
+    
+    /* Opcional: Efeito de sombra para "levantar" a imagem da tela */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
+/* 🎯 ALVO: A imagem dentro da classe .content-right */
+.content-right img {
+    /* Define a largura máxima da imagem. Ela não vai ultrapassar 600px, por exemplo. */
+    max-width: 700px; 
+    
+    /* Garante que a altura se ajuste proporcionalmente à largura. ESSENCIAL! */
+    height: auto; 
+    
+    /* Se a imagem for pequena demais ou grande demais, ela tentará cobrir a área */
+    object-fit: cover; 
+
+    /* Opcional: Arredonda as bordas da imagem, se desejar */
+    border-radius: 8px; 
+
+    /* Opcional: Se a imagem estiver muito grudada no texto, pode adicionar um espaçamento */
+    margin-left: 20px; 
+    /* flex: 1; Removido para que a imagem não tente preencher 100% da largura disponível pelo flex */
+    text-align: right; /* Alinha a imagem à direita dentro da div */
+}
+.button {
+    background-color: var(--cor-texto-claro); /* Fundo branco para o botão "SAIBA MAIS" */
+    color: var(--vermelho-principal);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+/* 1. Adiciona a transição suave */
+.button {
+    /* (Seu código existente para o botão...) */
+    
+    /* Isso garante que qualquer mudança no 'transform' leve 0.3 segundos, tornando a animação suave */
+    transition: transform 0.3s ease-in-out; 
+}
+
+/* 2. Define o que acontece ao passar o mouse (hover) */
+.button:hover {
+    /* Aumenta o tamanho do botão em 10% (1.1). Mude o valor para o aumento desejado. */
+    transform: scale(1.1); 
+}
+
+/* --- RODAPÉ (Amarelo) --- */
+.footer {
+    background-color: var(--amarelo-rodape);
+    padding: 40px 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+.footer-item {
+    flex: 1; /* Garante que cada item ocupe uma porção igual de espaço */
+    
+    /* ESTA É A MÁGICA: centraliza todo o texto e conteúdo em bloco */
+    text-align: center; 
+}
+.footer-item h2 {
+    border-bottom: 2px solid var(--cor-texto);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.footer-item p, .footer-item address {
+    margin: 5px 0;
+}
+
+.footer-item a {
+    color: var(--cor-texto);
+    text-decoration: none;
+}
+
+.footer-item a:hover {
+    text-decoration: underline;
+}
+
+.logo-footer {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.navbar .social-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;           /* mais próximos */
+}
+.navbar .social-icons a { margin-left: 10px; }
+.navbar .social-icons a img {
+  width: 30px;
+  height: 30px; 
+  object-fit: cover; 
+  border-radius: 5px;
+}
+.footer-item address a img {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+  margin-right: 5px;
+  border: none;
+  background: none;
+}
+
+.logo-img {
+    width: 80px; /* O novo tamanho desejado */
+    height: auto; /* Mantenha 'auto' para evitar distorção */
+}
+.logo-container {
+    display: flex; /* Faz a imagem e o texto ficarem lado a lado */
+    align-items: center; /* Alinha no meio (vertical) */
+    gap: 5px; /* Define o espaço exato entre a imagem e o texto, de forma limpa */
+}
+/* 1. Define o estado inicial e aplica a animação ao parágrafo */
+.animacao-texto {
+    opacity: 0; /* Começa invisível */
+    animation: fade-in-out 8s infinite; /* Nome da animação, duração e repetição */
+    /* 8s: A animação completa dura 8 segundos */
+    /* infinite: Repete indefinidamente */
+}
+/* O CSS permanece o mesmo, mas agora afeta o H1 anima todos os textos da home */
+.animacao-texto {
+    opacity: 0; 
+    animation: fade-in-out 8s infinite; 
+}
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 0; 
+    }
+    15% {
+        opacity: 1; 
+    }
+    85% {
+        opacity: 1; 
+    }
+    100% {
+        opacity: 0; 
+    }
+}
+/* Tablets e abaixo */
+@media (max-width: 991px) {
+    .catalogo {
+        gap: 15px;
+        padding: 10px 5px;
+    }
+
+    .produto {
+        flex: 0 0 200px;
+    }
+}
+
+/* Celulares médios e abaixo */
+@media (max-width: 768px) {
+    .catalogo {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .produto {
+        flex: 0 0 150px;
+    }
+
+    .info h3 {
+        font-size: 16px;
+    }
+
+    .btn-vermais {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+    .produto {
+        flex: 0 0 130px;
+    }
+
+    .info h3 {
+        font-size: 14px;
+    }
+}

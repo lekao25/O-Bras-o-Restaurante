@@ -1,0 +1,148 @@
+/* Variáveis (claro/escuro) */
+:root {
+    --vermelho-principal: rgb(224, 47, 47);
+    --amarelo-rodape: #ffe64d;
+    --cor-texto: #333;
+    --cor-texto-claro: #fff;
+    --cor-fundo: #ffffff;
+    --cor-card: #f9f9f9;
+}
+body.dark-mode {
+    --vermelho-principal: #8a1c1c;
+    --amarelo-rodape: #cca300;
+    --cor-texto: #ffffff;
+    --cor-texto-claro: #e0e0e0;
+    --cor-fundo: #000000;
+    --cor-card: #111111;
+}
+
+/* Base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+    padding-top: 60px; /* para navbar fixa */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Acessibilidade */
+.acessibilidade-botoes {
+    display: flex;
+    gap: 5px;
+    margin-left: 20px;
+}
+.acessibilidade-botoes button {
+    background-color: var(--amarelo-rodape);
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+}
+.acessibilidade-botoes button:hover {
+    filter: brightness(0.9);
+}
+
+/* Navbar fixa e consistente */
+.navbar {
+    background-color: var(--vermelho-principal);
+    color: var(--cor-texto-claro);
+    padding: 10px 50px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid var(--amarelo-rodape) !important;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: 100%;
+    z-index: 1000;
+    min-height: 60px;
+    box-sizing: border-box;
+}
+.navbar .logo { font-size: 24px; font-weight: bold; }
+.navbar nav ul {
+    list-style: none; padding: 0; margin: 0; display: flex;
+}
+.navbar nav ul li a {
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    padding: 0 15px;
+    transition: transform 0.3s ease-in-out;
+    display: inline-block;
+}
+nav ul li a:hover { transform: scale(1.1); }
+/* Ícones de redes sociais (header) – unificados e mais próximos */
+.navbar .social-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;           /* mais próximos */
+}
+.navbar .social-icons a { margin-left: 10px; }
+.navbar .social-icons a img {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 5px !important;
+}
+.logo-img { width: 80px !important; height: auto !important; }
+.logo-container { display: flex !important; align-items: center !important; gap: 5px !important; }
+
+/* Hero */
+.hero-section {
+    background-color: var(--vermelho-principal);
+    color: var(--cor-texto-claro);
+    padding: 80px 50px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.content-left { flex: 1; max-width: 50%; text-align: center; }
+.content-left h1 { font-size: 3rem; margin-bottom: 20px; }
+.content-left p { font-size: 1.125rem; line-height: 1.5; margin-bottom: 30px; }
+
+.content-right { flex: 1; text-align: right; }
+.content-right img {
+    max-width: 750px; height: auto; object-fit: cover; border-radius: 8px; margin-left: 20px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.content-right img:hover { transform: scale(1.05); opacity: 1; box-shadow: 0 10px 20px rgba(0,0,0,.2); }
+
+/* Animação de texto */
+.animacao-texto { opacity: 0; animation: fade-in-out 8s infinite; }
+@keyframes fade-in-out {
+    0% { opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; }
+}
+/* Rodapé */
+.footer {
+  background-color: var(--amarelo-rodape);
+  padding: 40px 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+.footer-item { flex: 1; text-align: center; }
+.footer-item h2 {
+  border-bottom: 2px solid var(--cor-texto);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+.footer-item p, .footer-item address { margin: 5px 0; }
+.footer-item a { color: var(--cor-texto); text-decoration: none; }
+.footer-item a:hover { text-decoration: underline; }
+.logo-footer { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
+
+/* Apenas os ícones do telefone/WhatsApp no address */
+.footer-item address a img {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+  margin-right: 5px;
+  border: none;
+  background: none;
+}
+
+
