@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2) Menu mobile (se existir) ---
-    const nav = document.querySelector('.navbar nav ul');
+    const nav = document.querySelector('.navbar nav');
     const menuButton = document.getElementById('menu-toggle');
     if (menuButton && nav) {
         menuButton.addEventListener('click', () => {
@@ -115,4 +115,5 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselContainer.addEventListener('mouseleave', startAutoSlide);
     }
 });
+
 
