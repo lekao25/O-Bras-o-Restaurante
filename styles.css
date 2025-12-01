@@ -23,14 +23,15 @@ body {
     padding: 0;
     color: var(--cor-texto);
     background-color: var(--cor-fundo);
-    padding-top: 80px; /* Espaço para o cabeçalho fixo */
+    padding-top: 80px; /* Espaço inicial para o header. O JS ajustará dinamicamente. */
     transition: background-color 0.3s, color 0.3s;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 *, *:before, *:after {
-    box-sizing: inherit; /* Garante consistência no modelo de caixa */
+    box-sizing: inherit;
 }
+
 
 /* Acessibilidade */
 .acessibilidade-botoes {
@@ -66,7 +67,7 @@ body {
     width: 100%;
     z-index: 1000;
     min-height: 80px;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 .navbar .logo { font-size: 24px; font-weight: bold; }
 .navbar nav ul {
@@ -80,7 +81,6 @@ body {
     display: inline-block;
 }
 nav ul li a:hover { transform: scale(1.1); }
-/* Ícones de redes sociais (header) */
 .navbar .social-icons {
   display: flex;
   align-items: center;
@@ -156,6 +156,19 @@ nav ul li a:hover { transform: scale(1.1); }
   background: none;
 }
 
+/* Estilo do Botão de Menu (Hamburguer) */
+#menu-toggle {
+    display: none;
+    order: 3;
+    background: none;
+    border: 2px solid var(--amarelo-rodape);
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0px 8px;
+    border-radius: 5px;
+}
+
 
 /* ========================================= */
 /* ========= REGRAS DE RESPONSIVIDADE ======== */
@@ -178,39 +191,14 @@ nav ul li a:hover { transform: scale(1.1); }
 
 /* Para Celulares (até 768px) */
 @media (max-width: 768px) {
-    body {
-        padding-top: 70px;
-    }
-    
-    .navbar {
-        justify-content: space-between;
-    }
-    
-    /* Esconde o menu de navegação e os ícones sociais para dar lugar a um menu "hambúrguer" */
-    .navbar nav,
     .navbar .social-icons {
         display: none;
     }
     
-    /* Adicione um botão de menu (hambúrguer) ao seu HTML para que a navegação apareça em celulares */
-    /* Ex: <button id="menu-toggle">☰</button> */
-    .navbar nav.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--vermelho-principal);
-        border-top: 2px solid var(--amarelo-rodape);
+    #menu-toggle {
+        display: block;
     }
-     .navbar nav.active li a {
-        padding: 15px;
-        text-align: center;
-        width: 100%;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
+
     .content-left h1 {
         font-size: 2.2rem;
     }
@@ -223,23 +211,33 @@ nav ul li a:hover { transform: scale(1.1); }
         align-items: center;
         gap: 25px;
     }
-/* Estilo do Botão de Menu (Hamburguer) */
-#menu-toggle {
-    display: none; /* Escondido por padrão */
-    order: 3; /* Ordem de exibição no cabeçalho */
-    background: none;
-    border: 2px solid var(--amarelo-rodape);
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-    padding: 0px 8px;
-    border-radius: 5px;
+
+    /* --- ESTILO DO MENU MOBILE CORRIGIDO --- */
+    .navbar nav {
+        order: 99;
+        flex-basis: 100%;
+        display: none;
+        background-color: var(--vermelho-principal);
+        border-top: 3px solid var(--amarelo-rodape);
+    }
+
+    .navbar nav.active {
+        display: block;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+    }
+
+    .navbar nav ul li {
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar nav ul li a {
+        padding: 15px;
+        display: block;
+    }
+    /* --- FIM DO ESTILO DO MENU MOBILE --- */
 }
-
-@media (max-width: 768px) {
-  #menu-toggle {
-    display: block; /* Aparece em telas de celular */
-  }
-}
-
-
