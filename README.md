@@ -1,2 +1,1 @@
-# O-Bras-o-Restaurante
-criação de identidade visual
+# O-Brasao-Restaurante
