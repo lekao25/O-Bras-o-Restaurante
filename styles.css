@@ -23,15 +23,20 @@ body {
     padding: 0;
     color: var(--cor-texto);
     background-color: var(--cor-fundo);
-    padding-top: 60px; /* para navbar fixa */
+    padding-top: 80px; /* Espaço para o cabeçalho fixo */
     transition: background-color 0.3s, color 0.3s;
+    box-sizing: border-box; 
+}
+
+*, *:before, *:after {
+    box-sizing: inherit; /* Garante consistência no modelo de caixa */
 }
 
 /* Acessibilidade */
 .acessibilidade-botoes {
     display: flex;
     gap: 5px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 .acessibilidade-botoes button {
     background-color: var(--amarelo-rodape);
@@ -51,7 +56,7 @@ body {
 .navbar {
     background-color: var(--vermelho-principal);
     color: var(--cor-texto-claro);
-    padding: 10px 50px !important;
+    padding: 10px 20px !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,8 +65,8 @@ body {
     top: 0; left: 0; right: 0;
     width: 100%;
     z-index: 1000;
-    min-height: 60px;
-    box-sizing: border-box;
+    min-height: 80px;
+    flex-wrap: wrap; 
 }
 .navbar .logo { font-size: 24px; font-weight: bold; }
 .navbar nav ul {
@@ -70,16 +75,16 @@ body {
 .navbar nav ul li a {
     color: var(--cor-texto-claro);
     text-decoration: none;
-    padding: 0 15px;
+    padding: 10px 15px;
     transition: transform 0.3s ease-in-out;
     display: inline-block;
 }
 nav ul li a:hover { transform: scale(1.1); }
-/* Ícones de redes sociais (header) – unificados e mais próximos */
+/* Ícones de redes sociais (header) */
 .navbar .social-icons {
   display: flex;
   align-items: center;
-  gap: 8px;           /* mais próximos */
+  gap: 8px;
 }
 .navbar .social-icons a { margin-left: 10px; }
 .navbar .social-icons a img {
@@ -90,11 +95,11 @@ nav ul li a:hover { transform: scale(1.1); }
 .logo-img { width: 80px !important; height: auto !important; }
 .logo-container { display: flex !important; align-items: center !important; gap: 5px !important; }
 
-/* Hero */
+/* Seção Principal (Hero) */
 .hero-section {
     background-color: var(--vermelho-principal);
     color: var(--cor-texto-claro);
-    padding: 80px 50px;
+    padding: 60px 20px;
     display: flex;
     align-items: center;
     gap: 30px;
@@ -103,9 +108,14 @@ nav ul li a:hover { transform: scale(1.1); }
 .content-left h1 { font-size: 3rem; margin-bottom: 20px; }
 .content-left p { font-size: 1.125rem; line-height: 1.5; margin-bottom: 30px; }
 
-.content-right { flex: 1; text-align: right; }
+.content-right { flex: 1; text-align: center; }
 .content-right img {
-    max-width: 750px; height: auto; object-fit: cover; border-radius: 8px; margin-left: 20px;
+    max-width: 100%;
+    width: 600px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-left: 0;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 .content-right img:hover { transform: scale(1.05); opacity: 1; box-shadow: 0 10px 20px rgba(0,0,0,.2); }
@@ -115,15 +125,17 @@ nav ul li a:hover { transform: scale(1.1); }
 @keyframes fade-in-out {
     0% { opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; }
 }
+
 /* Rodapé */
 .footer {
   background-color: var(--amarelo-rodape);
-  padding: 40px 50px;
+  padding: 40px 20px;
   display: flex;
   justify-content: space-between;
   gap: 30px;
+  flex-wrap: wrap;
 }
-.footer-item { flex: 1; text-align: center; }
+.footer-item { flex: 1; text-align: center; min-width: 280px; }
 .footer-item h2 {
   border-bottom: 2px solid var(--cor-texto);
   padding-bottom: 10px;
@@ -135,7 +147,6 @@ nav ul li a:hover { transform: scale(1.1); }
 .footer-item a:hover { text-decoration: underline; }
 .logo-footer { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
 
-/* Apenas os ícones do telefone/WhatsApp no address */
 .footer-item address a img {
   width: 25px;
   height: 25px;
@@ -145,88 +156,71 @@ nav ul li a:hover { transform: scale(1.1); }
   background: none;
 }
 
-/* =============================================== */
-/* --- CÓDIGO DE RESPONSIVIDADE ADICIONADO --- */
-/* =============================================== */
 
-/* --- CSS para o Menu Hambúrguer --- */
+/* ========================================= */
+/* ========= REGRAS DE RESPONSIVIDADE ======== */
+/* ========================================= */
 
-/* 1. Esconda o botão em telas grandes (desktop) */
-.menu-toggle-button {
-    display: none;
-    font-size: 28px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
+/* Para Tablets (até 992px) */
+@media (max-width: 992px) {
+    .hero-section {
+        flex-direction: column;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .content-left {
+        max-width: 100%;
+    }
+    .content-right img {
+        margin-top: 30px;
+    }
 }
 
-/* 2. Media Query: Estilos para tablets e celulares (até 768px) */
+/* Para Celulares (até 768px) */
 @media (max-width: 768px) {
-    /* Esconde a navegação normal */
-    .navbar nav {
-        display: none;
+    body {
+        padding-top: 70px;
     }
     
-    /* Mostra o botão hambúrguer */
-    .menu-toggle-button {
-        display: block;
-        order: 3; /* Muda a ordem para ele aparecer depois do logo */
-        margin-left: auto; /* Empurra os outros itens para a esquerda */
+    .navbar {
+        justify-content: space-between;
     }
-
-    /* Esconde os botões de acessibilidade e social no menu principal para simplificar */
-    .navbar .acessibilidade-botoes,
+    
+    /* Esconde o menu de navegação e os ícones sociais para dar lugar a um menu "hambúrguer" */
+    .navbar nav,
     .navbar .social-icons {
         display: none;
     }
-
-    /* Estilo do menu quando ele for aberto (via JavaScript) */
+    
+    /* Adicione um botão de menu (hambúrguer) ao seu HTML para que a navegação apareça em celulares */
+    /* Ex: <button id="menu-toggle">☰</button> */
     .navbar nav.active {
         display: flex;
+        flex-direction: column;
         position: absolute;
-        top: 100%; /* Começa logo abaixo do header */
-        right: 0;
+        top: 100%;
+        left: 0;
+        width: 100%;
         background-color: var(--vermelho-principal);
-        width: 250px; /* Largura do menu aberto */
         border-top: 2px solid var(--amarelo-rodape);
-        box-shadow: -2px 2px 10px rgba(0,0,0,0.5);
+    }
+     .navbar nav.active li a {
+        padding: 15px;
+        text-align: center;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
     
-    .navbar nav.active ul {
-        flex-direction: column; /* Links um abaixo do outro */
-        width: 100%;
+    .content-left h1 {
+        font-size: 2.2rem;
     }
-
-    .navbar nav.active ul li a {
-        padding: 15px 20px;
-        width: 100%;
-        text-align: left;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+    .content-left p {
+        font-size: 1rem;
     }
-}
-
-/* --- Ajuste da Seção Hero (até 900px) --- */
-
-@media (max-width: 900px) {
-  .hero-section {
-    flex-direction: column; /* Empilha os itens (imagem abaixo do texto) */
-    text-align: center;
-    padding: 60px 20px; /* Ajusta o espaçamento para telas menores */
-  }
-
-  .content-left, .content-right {
-    max-width: 100%; /* Permite que ambos ocupem toda a largura */
-    text-align: center;
-  }
-
-  .content-right img {
-      margin-left: 0; /* Remove a margem da imagem */
-      margin-top: 30px; /* Adiciona um espaço acima da imagem */
-      max-width: 90%; /* Ajusta a imagem para não colar nas bordas */
-  }
-
-  .content-left h1 {
-      font-size: 2.5rem; /* Diminui um pouco o título */
-  }
+    
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
 }
