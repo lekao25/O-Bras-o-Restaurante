@@ -94,12 +94,11 @@ nav ul li a:hover { transform: scale(1.1); }
 .logo-img { width: 80px; height: auto; }
 .logo-container { display: flex; align-items: center; gap: 5px; }
 
-/* Botão hambúrguer */
 #menu-toggle {
     display: none;
-    background: none;
+    background-color: var(--amarelo-rodape); /* Fundo amarelo */
+    color: #333; /* Texto escuro */
     border: 2px solid var(--amarelo-rodape);
-    color: white;
     font-size: 28px;
     cursor: pointer;
     padding: 0px 8px;
@@ -107,11 +106,12 @@ nav ul li a:hover { transform: scale(1.1); }
     z-index: 1001;
 }
 
-/* Responsividade */
+/* Mostrar botão hambúrguer em telas menores */
 @media (max-width: 768px) {
     #menu-toggle {
         display: block;
     }
+}
 
     .navbar nav {
         display: none;
@@ -147,3 +147,4 @@ nav ul li a:hover { transform: scale(1.1); }
         display: none;
     }
 }
+
