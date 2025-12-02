@@ -1,8 +1,9 @@
-/* Estilos da página de Cardápio */
+/* cardapio.css CORRIGIDO */
 
 .menu-page {
-    /* CORREÇÃO: O padding superior foi aumentado para 100px para garantir que o conteúdo não fique sobreposto pelo cabeçalho. */
-    padding: 100px 0 60px;
+    /* O padding-top foi removido daqui. O espaçamento agora é controlado pelo 'body'. */
+    /* Deixamos apenas um padding vertical para a estética da seção. */
+    padding: 40px 15px;
     background-color: var(--cor-fundo);
 }
 
@@ -14,33 +15,25 @@
 }
 
 .subtitle {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    transition: background-color 0.3s, color 0.3s;
     text-align: center;
     max-width: 800px;
     margin: 0 auto 30px auto;
     padding: 0 15px;
-}
-
-.menu-section {
-    background-color: var(--cor-fundo) !important;
     color: var(--cor-texto);
-    text-align: center;
 }
 
 .menu-section h2 {
-    width: max-content;
-    margin: 0 auto;
-    background-color: var(--cor-fundo);
+    font-size: 1.8em;
     color: var(--cor-texto);
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding: 20px 50px;
+    padding: 0; /* Removido para usar o padding do .menu-page */
 }
 
 .menu-item {
@@ -49,6 +42,7 @@
     box-shadow: 0 4px 8px rgba(0,0,0,.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
 }
 
 .menu-item:hover {
@@ -59,7 +53,7 @@
 .item-image {
     width: 100%;
     height: 200px;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -70,13 +64,15 @@
 
 .item-details h3 {
     color: var(--vermelho-principal);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 1.4em;
 }
 
 .item-details p {
     font-size: 0.95em;
     color: var(--cor-texto);
     margin-bottom: 15px;
+    line-height: 1.4;
 }
 
 .price {
@@ -86,31 +82,12 @@
     display: block;
 }
 
-.featured-item {
-    border: none;
-}
-
+/* Responsividade */
 @media (max-width: 768px) {
     .menu-grid {
         gap: 20px;
-        padding: 20px;
     }
-
     .page-title {
         font-size: 2rem;
-    }
-
-    .menu-item {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .page-title {
-        font-size: 1.5rem;
-    }
-
-    .subtitle {
-        font-size: 0.9rem;
     }
 }
