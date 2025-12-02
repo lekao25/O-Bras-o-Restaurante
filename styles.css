@@ -1,4 +1,4 @@
-/* styles.css CORRIGIDO E FINAL */
+/* styles.css - VERSÃO FINAL COM BOTÕES DE ACESSIBILIDADE NO MOBILE */
 
 /* Variáveis (claro/escuro) */
 :root {
@@ -26,8 +26,6 @@ body {
     padding: 0;
     color: var(--cor-texto);
     background-color: var(--cor-fundo);
-    /* Adiciona um espaço no topo para o cabeçalho em telas maiores. */
-    padding-top: 100px;
     transition: background-color 0.3s, color 0.3s;
     box-sizing: border-box;
 }
@@ -36,26 +34,10 @@ body {
     box-sizing: inherit;
 }
 
-/* Acessibilidade (visível apenas em telas maiores) */
-.acessibilidade-botoes {
-    display: flex;
-    gap: 5px;
-    margin-left: 10px;
-}
-
-.acessibilidade-botoes button {
-    background-color: var(--amarelo-rodape);
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #333;
-    font-size: 14px;
-}
-
-.acessibilidade-botoes button:hover {
-    filter: brightness(0.9);
+/* Regra de margem para o conteúdo principal */
+header.navbar + main {
+  /* Margem para telas maiores (desktop) */
+  margin-top: 110px;
 }
 
 /* Navbar fixa e consistente */
@@ -74,90 +56,35 @@ body {
     width: 100%;
     z-index: 1000;
     min-height: 80px;
-    flex-wrap: wrap; 
+    flex-wrap: wrap; /* Permite que os itens quebrem linha */
 }
 
-.navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
+.logo-container { display: flex; align-items: center; gap: 5px; }
+.logo-img { width: 80px; height: auto; }
+.navbar .logo { font-size: 24px; font-weight: bold; }
+.navbar nav ul { list-style: none; padding: 0; margin: 0; display: flex; }
+.navbar nav ul li a { color: var(--cor-texto-claro); text-decoration: none; padding: 10px 15px; transition: transform 0.3s; display: inline-block; }
+nav ul li a:hover { transform: scale(1.1); }
+.social-icons { display: flex; align-items: center; gap: 8px; }
+.social-icons a { margin-left: 10px; }
+.social-icons a img { width: 30px; height: 30px; border-radius: 5px; }
 
-.navbar nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-.navbar nav ul li a {
-    color: var(--cor-texto-claro);
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: transform 0.3s ease-in-out;
-    display: inline-block;
-}
-
-nav ul li a:hover {
-    transform: scale(1.1);
-}
-
-.navbar .social-icons {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.navbar .social-icons a {
-    margin-left: 10px;
-}
-
-.navbar .social-icons a img {
-    width: 30px;
-    height: 30px;
-    border-radius: 5px;
-}
-
-.logo-img {
-    width: 80px;
-    height: auto;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
 
 /* Botão hambúrguer */
-.menu-toggle {
-    display: none;
-    background-color: var(--amarelo-rodape);
-    color: #333;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border-radius: 4px;
-    user-select: none;
-    z-index: 1001;
-}
+.menu-toggle { display: none; background-color: var(--amarelo-rodape); color: #333; border: none; padding: 10px 15px; font-size: 1.5rem; cursor: pointer; border-radius: 4px; z-index: 1001; }
 
-/* Seção Principal (Hero - usada na Home e Quem Somos) */
-.hero-section {
-    background-color: var(--vermelho-principal);
-    color: var(--cor-texto-claro);
-    padding: 40px 20px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
+/* Acessibilidade */
+.acessibilidade-botoes { display: flex; gap: 5px; margin-left: 10px; }
+.acessibilidade-botoes button { background-color: var(--amarelo-rodape); border: none; border-radius: 4px; padding: 5px 10px; font-weight: bold; cursor: pointer; color: #333; font-size: 14px; }
+.acessibilidade-botoes button:hover { filter: brightness(0.9); }
 
+/* Seção Principal (Hero) */
+.hero-section { background-color: var(--vermelho-principal); color: var(--cor-texto-claro); padding: 40px 20px; display: flex; align-items: center; gap: 30px; }
 .content-left { flex: 1; max-width: 50%; text-align: center; }
 .content-left h1 { font-size: 3rem; margin-bottom: 20px; }
 .content-left p { font-size: 1.125rem; line-height: 1.5; margin-bottom: 30px; }
 .content-right { flex: 1; text-align: center; }
-.content-right img { max-width: 100%; width: 600px; height: auto; object-fit: cover; border-radius: 8px; transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; }
-.content-right img:hover { transform: scale(1.05); opacity: 1; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+.content-right img { max-width: 100%; width: 600px; height: auto; border-radius: 8px; }
 
 /* Animação de texto */
 .animacao-texto { animation: fade-in-out 8s infinite; }
@@ -169,45 +96,46 @@ nav ul li a:hover {
 .footer-item h2 { border-bottom: 2px solid var(--cor-texto); padding-bottom: 10px; margin-bottom: 15px; font-size: 22px; }
 .footer-item p, .footer-item address { margin: 5px 0; }
 .footer-item a { color: var(--cor-texto); text-decoration: none; }
-.footer-item a:hover { text-decoration: underline; }
 .logo-footer { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
-.footer-item address a img { width: 25px; height: 25px; vertical-align: middle; margin-right: 5px; border: none; background: none; }
+.footer-item address a img { width: 25px; height: 25px; vertical-align: middle; margin-right: 5px; }
 
 /* ========================================= */
 /* ========= REGRAS DE RESPONSIVIDADE ======== */
 /* ========================================= */
 
-/* Para Tablets (até 992px) */
 @media (max-width: 992px) {
-    .hero-section { flex-direction: column; padding-top: 40px; padding-bottom: 40px; }
+    .hero-section { flex-direction: column; padding: 40px; }
     .content-left { max-width: 100%; }
     .content-right img { margin-top: 30px; width: 100%; }
 }
 
-/* Para Celulares (até 768px) */
 @media (max-width: 768px) {
-    body {
-        /* Espaço de 80px, que agora corresponde à altura exata do header no mobile */
-        padding-top: 80px;
+    /* ===== MUDANÇA 1: Aumenta a margem para o header mais alto ===== */
+    header.navbar + main {
+        margin-top: 130px; /* Aumentado para acomodar 2 linhas no header */
     }
 
-    .menu-toggle {
-        display: block; /* Mostra o botão hambúrguer */
-    }
-
-    /* ===== CORREÇÃO APLICADA AQUI ===== */
-    /* Esconde a navegação, os ícones sociais E os botões de acessibilidade */
-    .navbar nav,
-    .navbar .social-icons,
-    .navbar .acessibilidade-botoes {
+    .menu-toggle { display: block; }
+    
+    /* ===== MUDANÇA 2: Botões de acessibilidade NÃO estão mais escondidos ===== */
+    .navbar nav, .navbar .social-icons {
         display: none;
     }
 
+    /* Regra para os botões quebrarem para a linha de baixo e centralizarem */
+    .navbar .acessibilidade-botoes {
+        width: 100%;
+        justify-content: center;
+        margin: 10px 0 0 0;
+        order: 3; /* Garante que eles fiquem por último na ordem do flex */
+    }
+
+    /* ===== MUDANÇA 3: Ajusta a posição do menu dropdown ===== */
     .navbar nav.active {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 80px; /* Alinha o menu dropdown abaixo do header */
+        top: 125px; /* Posição ajustada para o header mais alto */
         left: 0;
         width: 100%;
         background-color: var(--amarelo-rodape);
@@ -215,27 +143,14 @@ nav ul li a:hover {
         z-index: 999;
         padding: 0;
     }
-
-    .navbar nav.active ul {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar nav.active ul li a {
-        display: block;
-        padding: 15px;
-        text-align: center;
-        color: #333;
-        font-weight: bold;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-     .navbar nav.active ul li a:hover {
-        background-color: var(--vermelho-principal);
-        color: var(--cor-texto-claro);
-    }
-
+    
+    .navbar nav.active ul { flex-direction: column; width: 100%; }
+    .navbar nav.active ul li a { display: block; padding: 15px; text-align: center; color: #333; font-weight: bold; border-bottom: 1px solid rgba(0,0,0,0.1); }
+    .navbar nav.active ul li a:hover { background-color: var(--vermelho-principal); color: var(--cor-texto-claro); }
+    
     .hero-section { padding: 30px 15px; }
     .content-left h1 { font-size: 2rem; }
     .content-left p { font-size: 0.95rem; }
     .footer { flex-direction: column; align-items: center; }
 }
+
