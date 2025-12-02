@@ -2,8 +2,8 @@
 
 .menu-page { 
     padding: 60px 0; 
-    background-color: var(--cor-fundo); 
-    margin-top: 0; /* Remove margem superior */
+    background-color: var(--cor-fundo);
+    /* CORREÇÃO: A linha 'margin-top: 0;' foi removida */
 }
 
 .page-title {
