@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextBtn = document.querySelector('.carousel-control.next');
 
         let currentStartIndex = 0;
-        const autoSlideDuration = 4000; // 4 segundos por slide
+        const autoSlideDuration = 3000; // 3 segundos por slide
         let autoSlideTimer;
 
         // Função para calcular quantos slides devem ser visíveis
@@ -137,3 +137,4 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoSlide();   // Começa a passar as fotos automaticamente
     }
 });
+
