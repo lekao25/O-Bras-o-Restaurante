@@ -1,3 +1,5 @@
+/* styles.css CORRIGIDO */
+
 /* Variáveis (claro/escuro) */
 :root {
     --vermelho-principal: rgb(224, 47, 47);
@@ -21,11 +23,12 @@ body.dark-mode {
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 0; /* O padding-top será definido abaixo */
     color: var(--cor-texto);
     background-color: var(--cor-fundo);
-    /* CORREÇÃO: O padding-top foi aumentado para 120px para criar um espaço seguro para o cabeçalho que pode quebrar a linha. */
-    padding-top: 120px;
+    /* ===== SOLUÇÃO PRINCIPAL ===== */
+    /* Adiciona um espaço no topo para o cabeçalho em telas maiores. */
+    padding-top: 100px;
     transition: background-color 0.3s, color 0.3s;
     box-sizing: border-box;
 }
@@ -72,7 +75,7 @@ body {
     width: 100%;
     z-index: 1000;
     min-height: 80px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha se não houver espaço */
 }
 
 .navbar .logo {
@@ -140,11 +143,11 @@ nav ul li a:hover {
     z-index: 1001;
 }
 
-/* Seção Principal (Hero) */
+/* Seção Principal (Hero - usada na Home e Quem Somos) */
 .hero-section {
     background-color: var(--vermelho-principal);
     color: var(--cor-texto-claro);
-    padding: 60px 20px;
+    padding: 40px 20px; /* Espaçamento interno da seção */
     display: flex;
     align-items: center;
     gap: 30px;
@@ -277,24 +280,25 @@ nav ul li a:hover {
 /* Para Celulares (até 768px) */
 @media (max-width: 768px) {
     body {
-        /* O padding aqui volta para 80px pois o menu hambúrguer evita a quebra de linha do cabeçalho. */
+        /* ===== SOLUÇÃO MOBILE ===== */
+        /* Ajusta o padding para a altura do cabeçalho no modo mobile. */
         padding-top: 80px;
     }
 
     .menu-toggle {
-        display: block;
+        display: block; /* Mostra o botão hambúrguer */
     }
 
     .navbar nav,
     .navbar .social-icons {
-        display: none;
+        display: none; /* Esconde o menu e ícones originais */
     }
 
     .navbar nav.active {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 80px; /* Alinha abaixo do header */
         left: 0;
         width: 100%;
         background-color: var(--amarelo-rodape);
@@ -306,13 +310,6 @@ nav ul li a:hover {
 
     .navbar nav.active ul {
         flex-direction: column;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        width: 100%;
-    }
-
-    .navbar nav.active ul li {
         width: 100%;
     }
 
@@ -323,14 +320,12 @@ nav ul li a:hover {
         color: #333;
         font-weight: bold;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        text-decoration: none;
-        transition: background-color 0.3s, color 0.3s;
     }
-
-    .navbar nav.active ul li a:hover {
+     .navbar nav.active ul li a:hover {
         background-color: var(--vermelho-principal);
         color: var(--cor-texto-claro);
     }
+
 
     .hero-section {
         padding: 30px 15px;
@@ -344,38 +339,8 @@ nav ul li a:hover {
         font-size: 0.95rem;
     }
 
-    .content-right img {
-        width: 100%;
-        height: auto;
-    }
-
     .footer {
         flex-direction: column;
         align-items: center;
-        gap: 25px;
-        padding: 30px 15px;
-    }
-}
-
-/* Para celulares muito pequenos (até 480px) */
-@media (max-width: 480px) {
-    body {
-        padding-top: 65px;
-    }
-
-    .navbar {
-        min-height: 65px;
-    }
-
-    .content-left h1 {
-        font-size: 1.5rem;
-    }
-
-    .content-left p {
-        font-size: 0.9rem;
-    }
-
-    .hero-section {
-        padding: 20px 10px;
     }
 }
