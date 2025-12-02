@@ -276,8 +276,8 @@ nav ul li a:hover {
 /* Para Celulares (até 768px) */
 @media (max-width: 768px) {
     body {
-        /* CORREÇÃO: Padding aumentado para garantir que o conteúdo não fique sob o cabeçalho quando os itens quebram a linha */
-        padding-top: 130px;
+        /* CORREÇÃO: Valor alterado de 70px para 80px */
+        padding-top: 80px;
     }
 
     .menu-toggle {
@@ -293,8 +293,7 @@ nav ul li a:hover {
         display: flex;
         flex-direction: column;
         position: absolute;
-        /* CORREÇÃO: O 'top' deve corresponder ao padding-top do body para alinhar corretamente */
-        top: 130px;
+        top: 80px;
         left: 0;
         width: 100%;
         background-color: var(--amarelo-rodape);
@@ -360,17 +359,11 @@ nav ul li a:hover {
 /* Para celulares muito pequenos (até 480px) */
 @media (max-width: 480px) {
     body {
-         /* CORREÇÃO: Ajuste no padding para esta resolução */
-        padding-top: 120px;
+        padding-top: 65px;
     }
 
     .navbar {
-        min-height: auto; /* Permitir que a altura se ajuste ao conteúdo que quebra a linha */
-    }
-
-    .navbar nav.active {
-        /* CORREÇÃO: O 'top' do menu também precisa ser ajustado aqui */
-        top: 120px;
+        min-height: 65px;
     }
 
     .content-left h1 {
