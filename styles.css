@@ -1,4 +1,4 @@
- /* Variáveis (claro/escuro) */
+/* Variáveis (claro/escuro) */
 :root {
     --vermelho-principal: rgb(224, 47, 47);
     --amarelo-rodape: #ffe64d;
@@ -147,7 +147,6 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     gap: 30px;
-    margin-top: 0; /* Remove qualquer margem superior */
 }
 
 .content-left {
@@ -277,7 +276,8 @@ nav ul li a:hover {
 /* Para Celulares (até 768px) */
 @media (max-width: 768px) {
     body {
-        padding-top: 70px;
+        /* CORREÇÃO: Valor alterado de 70px para 80px */
+        padding-top: 80px;
     }
 
     .menu-toggle {
