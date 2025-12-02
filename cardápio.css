@@ -1,9 +1,9 @@
 /* Estilos da página de Cardápio */
 
-.menu-page { 
-    padding: 60px 0; 
+.menu-page {
+    /* CORREÇÃO: O padding superior foi aumentado para 100px para garantir que o conteúdo não fique sobreposto pelo cabeçalho. */
+    padding: 100px 0 60px;
     background-color: var(--cor-fundo);
-    /* CORREÇÃO: A linha 'margin-top: 0;' foi removida */
 }
 
 .page-title {
@@ -64,19 +64,19 @@
     background-repeat: no-repeat;
 }
 
-.item-details { 
-    padding: 20px; 
+.item-details {
+    padding: 20px;
 }
 
-.item-details h3 { 
-    color: var(--vermelho-principal); 
-    margin-bottom: 5px; 
+.item-details h3 {
+    color: var(--vermelho-principal);
+    margin-bottom: 5px;
 }
 
-.item-details p { 
-    font-size: 0.95em; 
-    color: var(--cor-texto); 
-    margin-bottom: 15px; 
+.item-details p {
+    font-size: 0.95em;
+    color: var(--cor-texto);
+    margin-bottom: 15px;
 }
 
 .price {
@@ -86,14 +86,14 @@
     display: block;
 }
 
-.featured-item { 
-    border: none; 
+.featured-item {
+    border: none;
 }
 
 @media (max-width: 768px) {
-    .menu-grid { 
-        gap: 20px; 
-        padding: 20px; 
+    .menu-grid {
+        gap: 20px;
+        padding: 20px;
     }
 
     .page-title {
