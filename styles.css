@@ -24,7 +24,8 @@ body {
     padding: 0;
     color: var(--cor-texto);
     background-color: var(--cor-fundo);
-    padding-top: 80px; /* Espaço para o header fixo */
+    /* CORREÇÃO: O padding-top foi aumentado para 120px para criar um espaço seguro para o cabeçalho que pode quebrar a linha. */
+    padding-top: 120px;
     transition: background-color 0.3s, color 0.3s;
     box-sizing: border-box;
 }
@@ -276,7 +277,7 @@ nav ul li a:hover {
 /* Para Celulares (até 768px) */
 @media (max-width: 768px) {
     body {
-        /* CORREÇÃO: Valor alterado de 70px para 80px */
+        /* O padding aqui volta para 80px pois o menu hambúrguer evita a quebra de linha do cabeçalho. */
         padding-top: 80px;
     }
 
