@@ -147,4 +147,59 @@ nav ul li a:hover { transform: scale(1.1); }
         display: none;
     }
 }
+/* Botão hambúrguer */
+#menu-toggle {
+    display: none;
+    background-color: var(--amarelo-rodape);
+    color: #333;
+    border: 2px solid var(--amarelo-rodape);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0px 8px;
+    border-radius: 5px;
+    z-index: 1001;
+}
+
+/* Mostrar botão hambúrguer em telas menores */
+@media (max-width: 768px) {
+    #menu-toggle {
+        display: block;
+    }
+
+    .navbar nav {
+        display: none;
+        background-color: var(--vermelho-principal);
+        border-top: 3px solid var(--amarelo-rodape);
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar nav.active {
+        display: block;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+    }
+
+    .navbar nav ul li {
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar nav ul li a {
+        padding: 15px;
+        display: block;
+    }
+
+    .navbar .social-icons {
+        display: none;
+    }
+}
+
+
 
