@@ -123,3 +123,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', ajustarPaddingDoCorpo);
     window.addEventListener('resize', ajustarPaddingDoCorpo);
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // Menu hambúrguer
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.querySelector('.navbar nav');
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    }
+
+    // Resto do seu código de acessibilidade e carrossel...
+});
+
