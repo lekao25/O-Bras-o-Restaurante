@@ -25,7 +25,7 @@ body.dark-mode {
     overflow: hidden;
     position: relative;
     height: 600px;
-    margin-top: 0;
+    /* CORREÇÃO: A linha 'margin-top: 0;' foi removida */
     width: 100%;
 }
 
