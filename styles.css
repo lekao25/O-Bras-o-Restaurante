@@ -90,7 +90,7 @@ body {
 .content-left h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 20px; }
 .content-left p { font-size: clamp(1rem, 2.5vw, 1.125rem); line-height: 1.5; }
 .content-right { flex: 1; text-align: center; }
-.content-right img { max-width: 100%; width: 800px; height: auto; border-radius: 8px; transition: transform 0.3s; }
+.content-right img { max-width: 100%; width: 950px; height: auto; border-radius: 8px; transition: transform 0.3s; }
 .content-right img:hover { transform: scale(1.05); }
 .animacao-texto { animation: fade-in-out 8s infinite; }
 
@@ -342,6 +342,7 @@ body {
     .hero-section { padding: 30px 15px; }
     .footer { flex-direction: column; align-items: center; }
 }
+
 
 
 
