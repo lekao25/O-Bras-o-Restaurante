@@ -1,93 +1,55 @@
-/* cardapio.css CORRIGIDO */
+/* =============== ARQUIVO: cardapio.css =============== */
 
 .menu-page {
-    /* O padding-top foi removido daqui. O espaçamento agora é controlado pelo 'body'. */
-    /* Deixamos apenas um padding vertical para a estética da seção. */
-    padding: 40px 15px;
+    padding: 40px 20px;
     background-color: var(--cor-fundo);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.page-title {
+.menu-page h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
     color: var(--vermelho-principal);
-    text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-    padding: 0 15px;
-    color: var(--cor-texto);
-}
-
-.menu-section h2 {
-    font-size: 1.8em;
-    color: var(--cor-texto);
-    text-align: center;
-    margin-bottom: 30px;
 }
 
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding: 0; /* Removido para usar o padding do .menu-page */
+}
+
+.menu-category {
+    background-color: var(--cor-card);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.menu-category h2 {
+    border-bottom: 2px solid var(--vermelho-principal);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.menu-category ul {
+    list-style: none;
+    padding: 0;
 }
 
 .menu-item {
-    background: var(--cor-card);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ccc;
 }
 
-.menu-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 20px rgba(0,0,0,.25);
+.menu-item:last-child {
+    border-bottom: none;
 }
 
-.item-image {
-    width: 100%;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.item-details {
-    padding: 20px;
-}
-
-.item-details h3 {
-    color: var(--vermelho-principal);
-    margin-bottom: 10px;
-    font-size: 1.4em;
-}
-
-.item-details p {
-    font-size: 0.95em;
-    color: var(--cor-texto);
-    margin-bottom: 15px;
-    line-height: 1.4;
-}
-
-.price {
-    font-size: 1.4em;
+.menu-item span:first-child {
     font-weight: bold;
-    color: var(--vermelho-principal);
-    display: block;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .menu-grid {
-        gap: 20px;
-    }
-    .page-title {
-        font-size: 2rem;
-    }
 }
