@@ -219,22 +219,75 @@ body {
 .carousel-control.prev { left: 20px; }
 .carousel-control.next { right: 20px; }
 
-/* --- Rodapé --- */
-.footer { 
-    background-color: var(--amarelo-rodape); 
-    padding: 40px 20px; 
-    display: flex; 
-    justify-content: space-around; 
-    gap: 30px; 
-    flex-wrap: wrap; 
-    color: var(--cor-texto); 
+/* --- Rodapé (VERSÃO CORRIGIDA E REORGANIZADA) --- */
+.footer {
+    background-color: var(--amarelo-rodape);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+    color: var(--cor-texto);
+    align-items: flex-start; /* Alinha as colunas pelo topo para um visual limpo */
 }
-.footer-item { flex: 1; text-align: center; min-width: 280px; }
-.footer-item h2 { border-bottom: 2px solid var(--cor-texto); padding-bottom: 10px; margin-bottom: 15px; display: inline-block; }
-.footer-item a { color: var(--cor-texto); text-decoration: none; }
-.footer-item a:hover { text-decoration: underline; }
-.logo-footer { font-size: 24px; font-weight: bold; }
-.footer-item address a img { width: 25px; height: 25px; vertical-align: middle; margin-right: 5px; }
+
+.footer-item {
+    flex: 1; /* Garante que as colunas ocupem espaço igual */
+    min-width: 280px; /* Largura mínima para evitar que fiquem muito espremidas */
+    
+    /* USA FLEXBOX PARA ORGANIZAR O CONTEÚDO INTERNO */
+    display: flex;
+    flex-direction: column; /* Organiza os itens em uma coluna */
+    align-items: center;   /* Centraliza todos os itens na horizontal */
+    text-align: center;    /* Centraliza o texto dentro dos itens */
+}
+
+.footer-item h2 {
+    border-bottom: 2px solid var(--cor-texto);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+    width: 80%; /* Cria uma linha de largura consistente abaixo dos títulos */
+}
+
+.footer-item p {
+    margin: 0 0 10px 0; /* Espaçamento padronizado */
+}
+
+.footer-item address {
+    font-style: normal; /* Remove o itálico padrão da tag <address> */
+    line-height: 1.6;   /* Aumenta o espaço entre as linhas do endereço */
+}
+
+.logo-footer {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-item a {
+    color: var(--cor-texto);
+    text-decoration: none;
+}
+
+.footer-item a:hover {
+    text-decoration: underline;
+}
+
+.footer-item address a {
+    display: inline-flex; /* Permite alinhar ícone e texto com flexbox */
+    align-items: center;   /* Centraliza verticalmente o ícone com o texto */
+    gap: 8px;              /* Adiciona um espaço entre o ícone e o texto */
+    margin-bottom: 5px;
+}
+
+.footer-item address a img {
+    width: 25px;
+    height: 25px;
+    /* vertical-align e margin-right não são mais necessários com flex e gap */
+}
+
 
 /* --- Regras de Responsividade --- */
 
@@ -289,3 +342,4 @@ body {
     .hero-section { padding: 30px 15px; }
     .footer { flex-direction: column; align-items: center; }
 }
+
