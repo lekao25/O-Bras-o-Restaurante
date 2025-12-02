@@ -1,7 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Script de funcionalidades carregado com sucesso!");
+    console.log("Script carregado com sucesso!");
 
-    // --- 1) Acessibilidade: Fonte + Tema ---
+    // --- Menu Hambúrguer ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.querySelector('.navbar nav');
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        const navLinks = nav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+    }
+
+    // --- Acessibilidade: Fonte + Tema ---
     const body = document.body;
     const btnAumentar = document.getElementById('btn-aumentar');
     const btnDiminuir = document.getElementById('btn-diminuir');
@@ -15,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.style.fontSize = `${fontSize}px`;
         localStorage.setItem('userFontSize', fontSize);
     }
+
     updateFontSize();
 
     if (btnAumentar) {
@@ -25,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
     if (btnDiminuir) {
         btnDiminuir.addEventListener('click', () => {
             if (fontSize > minFontSize) {
@@ -44,16 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2) Menu mobile ---
-    const nav = document.querySelector('.navbar nav');
-    const menuButton = document.getElementById('menu-toggle');
-    if (menuButton && nav) {
-        menuButton.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-    }
-
-    // --- 3) Carrossel: responsivo + autoplay ---
+    // --- Carrossel ---
     const carouselContainer = document.querySelector('.carousel-container');
     if (carouselContainer) {
         const slides = document.querySelectorAll('.slide');
@@ -110,30 +121,4 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
         carouselContainer.addEventListener('mouseleave', startAutoSlide);
     }
-
-    // --- Ajuste automático para o cabeçalho fixo ---
-    function ajustarPaddingDoCorpo() {
-        const header = document.querySelector('.navbar');
-        if (header) {
-            const headerHeight = header.offsetHeight;
-            document.body.style.paddingTop = headerHeight + 'px';
-        }
-    }
-
-    window.addEventListener('load', ajustarPaddingDoCorpo);
-    window.addEventListener('resize', ajustarPaddingDoCorpo);
 });
-document.addEventListener('DOMContentLoaded', () => {
-    // Menu hambúrguer
-    const menuToggle = document.getElementById('menu-toggle');
-    const nav = document.querySelector('.navbar nav');
-
-    if (menuToggle && nav) {
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-    }
-
-    // Resto do seu código de acessibilidade e carrossel...
-});
-
