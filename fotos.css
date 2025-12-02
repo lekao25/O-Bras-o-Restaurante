@@ -1,22 +1,28 @@
-/* =============== ARQUIVO: fotos.css =============== */
+/* =============== ARQUIVO: fotos.css (VERSÃO CORRIGIDA) =============== */
 
 .carousel-section {
-    width: 100%;
-    height: 600px;
-    position: relative;
+    background-color: var(--vermelho-principal);
+    padding: 0;
     overflow: hidden;
+    position: relative;
+    height: 600px;
+    width: 100%;
 }
 
 .carousel-container {
-    display: flex;
     height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
     transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-    flex: 0 0 100%;
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
     height: 100%;
-    position: relative;
+    box-sizing: border-box;
+    padding: 0 10px;
 }
 
 .content-gallery {
@@ -32,38 +38,78 @@
     background-blend-mode: darken;
     background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
-    padding: 30px;
+    padding: 30px 10px;
     text-shadow: 1px 1px 3px #000;
 }
-.content-gallery h1 { font-size: 2em; }
-.content-gallery p { font-size: 1.1em; }
+
+.content-gallery h1 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.content-gallery p {
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+/* Imagens de fundo */
+.slide-image-1 { background-image: url('faxada.jpg'); }
+.slide-image-2 { background-image: url('forno frango assado.jpg'); }
+.slide-image-3 { background-image: url('forno assado.jpg'); }
+.slide-image-4 { background-image: url('farofa brasao.jpg'); }
+.slide-image-5 { background-image: url('maionese com palmito.jpg'); }
+.slide-image-6 { background-image: url('salpicao.jpg'); }
+.slide-image-7 { background-image: url('japa e patroa.png'); }
+.slide-image-8 { background-image: url('torresmo.jpg'); }
+.slide-image-9 { background-image: url('Prato brasao logo.jpg'); }
+.slide-image-10 { background-image: url('patroa e japa.jpg'); }
+.slide-image-11 { background-image: url('carbe de panela.jpg'); }
+.slide-image-12 { background-image: url('bife acebolado.jpg'); }
+.slide-image-13 { background-image: url('lasanha.jpg'); }
+.slide-image-14 { background-image: url('costelinha de porco.jpg'); }
+.slide-image-15 { background-image: url('feijoada.jpg'); }
+.slide-image-16 { background-image: url('carne assada.jpg'); }
+.slide-image-17 { background-image: url('costela assada.jpg'); }
+.slide-image-18 { background-image: url('marmitex a grega e espagueta.jpg'); }
+.slide-image-19 { background-image: url('marmitex a grega e espagueta.jpg'); }
+.slide-image-20 { background-image: url('marmitex a grega e espagueta.jpg'); }
+
 
 /* Controles do carrossel */
 .carousel-control {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
     border: none;
     padding: 15px;
     cursor: pointer;
     font-size: 1.5em;
-    z-index: 10;
+    z-index: 100;
     border-radius: 50%;
+    transition: background-color 0.3s;
 }
-.carousel-control:hover { background-color: rgba(0, 0, 0, 0.8); }
-.carousel-control.prev { left: 15px; }
-.carousel-control.next { right: 15px; }
 
-/* Imagens de Fundo */
-.slide-image-1 { background-image: url('faxada.jpg'); }
-.slide-image-2 { background-image: url('forno frango assado.jpg'); }
-.slide-image-3 { background-image: url('forno assado.jpg'); }
-/* Adicione as outras 17 classes de imagem aqui... */
+.carousel-control:hover { background-color: rgba(0, 0, 0, 0.8); }
+.carousel-control.prev { left: 10px; }
+.carousel-control.next { right: 10px; }
+
+/* Responsividade do carrossel */
+@media (max-width: 1200px) {
+    .slide {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
 
 @media (max-width: 768px) {
-    .carousel-section { height: 400px; }
-    .content-gallery h1 { font-size: 1.5em; }
-    .content-gallery p { font-size: 0.9em; }
+    .carousel-section { height: 380px; }
+    .slide {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+    .content-gallery h1 { font-size: 1.3em; }
+    .content-gallery p { font-size: 0.85em; }
 }
