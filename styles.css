@@ -1,6 +1,7 @@
-/* =============== ARQUIVO: styles.css =============== */
+/* =============== ARQUIVO MESTRE DE ESTILOS =============== */
+/* Contém todos os estilos para o site Restaurante O Brasão */
 
-/* Variáveis (claro/escuro) */
+/* --- Variáveis Globais e Modo Escuro --- */
 :root {
     --vermelho-principal: rgb(224, 47, 47);
     --amarelo-rodape: #ffe64d;
@@ -19,20 +20,30 @@ body.dark-mode {
     --cor-card: #111111;
 }
 
-/* Base */
+/* --- Estilos de Base --- */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     color: var(--cor-texto);
     background-color: var(--cor-fundo);
     box-sizing: border-box;
-    /* Espaço no topo para o cabeçalho fixo */
-    padding-top: 90px;
+    /* Garante espaço no topo para o cabeçalho fixo */
+    padding-top: 90px; 
+    transition: background-color 0.3s, color 0.3s;
 }
 
-*, *:before, *:after { box-sizing: inherit; }
+*, *:before, *:after { 
+    box-sizing: inherit; 
+}
 
-/* Navbar fixa e consistente */
+@keyframes fade-in-out {
+    0% { opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* --- Cabeçalho e Navegação (Navbar) --- */
 .navbar {
     background-color: var(--vermelho-principal);
     color: var(--cor-texto-claro);
@@ -47,47 +58,196 @@ body {
     right: 0;
     width: 100%;
     z-index: 1000;
-    height: 90px; /* Altura fixa para o header */
+    height: 90px;
 }
 
 .logo-container { display: flex; align-items: center; gap: 10px; }
 .logo-img { width: 80px; height: auto; }
 .navbar .logo { font-size: 24px; font-weight: bold; }
 
-/* Estilos do Menu e Botões na Versão DESKTOP */
 .navbar nav { display: flex; align-items: center; gap: 15px; }
 .navbar nav ul { list-style: none; padding: 0; margin: 0; display: flex; }
 .navbar nav ul li a { color: var(--cor-texto-claro); text-decoration: none; padding: 10px 15px; display: inline-block; transition: transform 0.3s; }
 .navbar nav ul li a:hover { transform: scale(1.1); }
+
 .acessibilidade-botoes { display: flex; gap: 5px; }
 .acessibilidade-botoes button { background-color: var(--amarelo-rodape); border: none; border-radius: 4px; padding: 5px 10px; font-weight: bold; cursor: pointer; color: #333; font-size: 14px; }
 .social-icons { display: flex; align-items: center; gap: 8px; }
 .social-icons a img { width: 30px; height: 30px; border-radius: 5px; }
 
-/* Botão hambúrguer (escondido no desktop) */
 .menu-toggle { display: none; }
 
-/* Estilos de seções genéricas */
-.hero-section { background-color: var(--vermelho-principal); color: var(--cor-texto-claro); padding: 40px 20px; display: flex; align-items: center; gap: 30px; }
+/* --- Seções Genéricas (Página Inicial, Quem Somos) --- */
+.hero-section { 
+    background-color: var(--vermelho-principal); 
+    color: var(--cor-texto-claro); 
+    padding: 40px 20px; 
+    display: flex; 
+    align-items: center; 
+    gap: 30px; 
+}
 .content-left { flex: 1; text-align: center; }
-.content-left h1 { font-size: 3rem; margin-bottom: 20px; }
-.content-left p { font-size: 1.125rem; line-height: 1.5; }
+.content-left h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 20px; }
+.content-left p { font-size: clamp(1rem, 2.5vw, 1.125rem); line-height: 1.5; }
 .content-right { flex: 1; text-align: center; }
-.content-right img { max-width: 100%; width: 600px; height: auto; border-radius: 8px; }
+.content-right img { max-width: 100%; width: 600px; height: auto; border-radius: 8px; transition: transform 0.3s; }
+.content-right img:hover { transform: scale(1.05); }
 .animacao-texto { animation: fade-in-out 8s infinite; }
-@keyframes fade-in-out { 0%{opacity:0;} 15%{opacity:1;} 85%{opacity:1;} 100%{opacity:0;} }
 
-/* Rodapé */
-.footer { background-color: var(--amarelo-rodape); padding: 40px 20px; display: flex; justify-content: space-around; gap: 30px; flex-wrap: wrap; color: var(--cor-texto); }
+/* --- Página do Cardápio --- */
+.menu-page { 
+    padding: 60px 20px; 
+    background-color: var(--cor-fundo);
+}
+.page-title {
+    color: var(--vermelho-principal);
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 2.5em);
+    margin-bottom: 10px;
+}
+.subtitle {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+.menu-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--cor-texto);
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.menu-item {
+    background: var(--cor-card);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.menu-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0,0,0,.2);
+}
+.item-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+.item-details { padding: 20px; text-align: left; }
+.item-details h3 { color: var(--vermelho-principal); margin-top: 0; }
+.item-details p { font-size: 0.95em; color: var(--cor-texto); }
+.price { font-size: 1.4em; font-weight: bold; color: var(--vermelho-principal); display: block; margin-top: 15px; }
+
+/* --- Página de Fotos (Carrossel) --- */
+.carousel-section {
+    background-color: var(--vermelho-principal);
+    padding: 40px 0;
+    overflow: hidden;
+    position: relative;
+}
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.slide {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    height: 450px;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+.content-gallery {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    padding: 20px;
+    text-shadow: 1px 1px 3px #000;
+    border-radius: 8px;
+}
+.content-gallery h1 { font-size: 1.5em; margin-bottom: 5px; }
+.content-gallery p { font-size: 1em; }
+
+/* Imagens de fundo para o carrossel */
+.slide-image-1 { background-image: url('faxada.jpg'); }
+.slide-image-2 { background-image: url('forno frango assado.jpg'); }
+.slide-image-3 { background-image: url('forno assado.jpg'); }
+.slide-image-4 { background-image: url('farofa brasao.jpg'); }
+.slide-image-5 { background-image: url('maionese com palmito.jpg'); }
+.slide-image-6 { background-image: url('salpicao.jpg'); }
+.slide-image-7 { background-image: url('japa e patroa.png'); }
+.slide-image-8 { background-image: url('torresmo.jpg'); }
+.slide-image-9 { background-image: url('Prato brasao logo.jpg'); }
+.slide-image-10 { background-image: url('patroa e japa.jpg'); }
+.slide-image-11 { background-image: url('carbe de panela.jpg'); }
+.slide-image-12 { background-image: url('bife acebolado.jpg'); }
+.slide-image-13 { background-image: url('lasanha.jpg'); }
+.slide-image-14 { background-image: url('costelinha de porco.jpg'); }
+.slide-image-15 { background-image: url('feijoada.jpg'); }
+.slide-image-16 { background-image: url('carne assada.jpg'); }
+.slide-image-17 { background-image: url('costela assada.jpg'); }
+.slide-image-18, .slide-image-19, .slide-image-20 { background-image: url('marmitex a grega e espagueta.jpg'); }
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    z-index: 100;
+    border-radius: 50%;
+}
+.carousel-control:hover { background-color: rgba(0, 0, 0, 0.8); }
+.carousel-control.prev { left: 20px; }
+.carousel-control.next { right: 20px; }
+
+/* --- Rodapé --- */
+.footer { 
+    background-color: var(--amarelo-rodape); 
+    padding: 40px 20px; 
+    display: flex; 
+    justify-content: space-around; 
+    gap: 30px; 
+    flex-wrap: wrap; 
+    color: var(--cor-texto); 
+}
 .footer-item { flex: 1; text-align: center; min-width: 280px; }
-.footer-item h2 { border-bottom: 2px solid var(--cor-texto); padding-bottom: 10px; margin-bottom: 15px; font-size: 22px; }
-.footer-item a { color: var(--cor-texto); }
+.footer-item h2 { border-bottom: 2px solid var(--cor-texto); padding-bottom: 10px; margin-bottom: 15px; display: inline-block; }
+.footer-item a { color: var(--cor-texto); text-decoration: none; }
+.footer-item a:hover { text-decoration: underline; }
 .logo-footer { font-size: 24px; font-weight: bold; }
-.footer-item address a img { width: 25px; height: 25px; vertical-align: middle; }
+.footer-item address a img { width: 25px; height: 25px; vertical-align: middle; margin-right: 5px; }
 
-/* Regras de Responsividade */
+/* --- Regras de Responsividade --- */
+
+/* Tablets e Carrossel com 2 slides */
+@media (max-width: 1200px) {
+    .slide {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+/* Tablets e Celulares (Menu Hambúrguer) */
 @media (max-width: 1050px) {
-    /* Esconde o menu desktop e mostra o botão hambúrguer */
     .menu-toggle {
         display: block;
         background: none;
@@ -97,8 +257,6 @@ body {
         cursor: pointer;
         z-index: 1001;
     }
-    
-    /* Por padrão, o menu <nav> fica escondido fora da tela */
     .navbar nav {
         display: flex;
         flex-direction: column;
@@ -107,29 +265,27 @@ body {
         gap: 40px;
         position: fixed;
         top: 0;
-        left: -100%; /* Começa escondido à esquerda */
+        left: -100%;
         width: 100%;
         height: 100%;
         background-color: rgba(25, 25, 25, 0.98);
         transition: left 0.3s ease-in-out;
     }
-    
-    /* Quando o menu está ativo, ele desliza para a tela */
     .navbar nav.active {
         left: 0;
     }
-
-    /* Estilos dos itens dentro do menu mobile */
     .navbar nav ul { flex-direction: column; text-align: center; gap: 15px; }
-    .navbar nav ul li a { font-size: 1.5rem; font-weight: bold; color: white; }
+    .navbar nav ul li a { font-size: 1.5rem; }
     .social-icons a img { width: 40px; height: 40px; }
-
-    /* Ajustes de layout para seções */
     .hero-section { flex-direction: column; padding: 40px; text-align: center; }
 }
 
+/* Celulares e Carrossel com 1 slide */
 @media (max-width: 768px) {
+    .slide {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
     .hero-section { padding: 30px 15px; }
-    .content-left h1 { font-size: 2rem; }
     .footer { flex-direction: column; align-items: center; }
 }
