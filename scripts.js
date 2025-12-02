@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Script carregado com sucesso!");
-
     // --- Menu Hambúrguer ---
     const menuToggle = document.getElementById('menu-toggle');
     const nav = document.querySelector('.navbar nav');
@@ -10,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.classList.toggle('active');
         });
 
-        // Fechar menu ao clicar em um link
         const navLinks = nav.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -25,27 +22,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnDiminuir = document.getElementById('btn-diminuir');
     const btnTema = document.getElementById('btn-tema');
 
-    let fontSize = parseInt(localStorage.getItem('userFontSize')) || 16;
-    const maxFontSize = 24;
-    const minFontSize = 12;
+    if (btnAumentar && btnDiminuir) {
+        let fontSize = parseInt(localStorage.getItem('userFontSize')) || 16;
+        const maxFontSize = 24;
+        const minFontSize = 12;
 
-    function updateFontSize() {
-        document.documentElement.style.fontSize = `${fontSize}px`;
-        localStorage.setItem('userFontSize', fontSize);
-    }
+        const updateFontSize = () => {
+            document.documentElement.style.fontSize = `${fontSize}px`;
+            localStorage.setItem('userFontSize', fontSize);
+        };
+        updateFontSize();
 
-    updateFontSize();
-
-    if (btnAumentar) {
         btnAumentar.addEventListener('click', () => {
             if (fontSize < maxFontSize) {
                 fontSize += 1;
                 updateFontSize();
             }
         });
-    }
 
-    if (btnDiminuir) {
         btnDiminuir.addEventListener('click', () => {
             if (fontSize > minFontSize) {
                 fontSize -= 1;
@@ -54,71 +48,92 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const userTheme = localStorage.getItem('userTheme');
-    if (userTheme === 'dark') body.classList.add('dark-mode');
-
     if (btnTema) {
+        const userTheme = localStorage.getItem('userTheme');
+        if (userTheme === 'dark') {
+            body.classList.add('dark-mode');
+        }
+
         btnTema.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
-            localStorage.setItem('userTheme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+            const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('userTheme', currentTheme);
         });
     }
 
-    // --- Carrossel ---
+    // ========================================================
+    // --- CARROSSEL (CÓDIGO CORRIGIDO) ---
+    // ========================================================
     const carouselContainer = document.querySelector('.carousel-container');
     if (carouselContainer) {
         const slides = document.querySelectorAll('.slide');
         const prevBtn = document.querySelector('.carousel-control.prev');
         const nextBtn = document.querySelector('.carousel-control.next');
 
-        function getSlidesPerView() {
+        let currentStartIndex = 0;
+        const autoSlideDuration = 4000; // 4 segundos por slide
+        let autoSlideTimer;
+
+        // Função para calcular quantos slides devem ser visíveis
+        const getSlidesPerView = () => {
             if (window.innerWidth <= 768) return 1;
             if (window.innerWidth <= 1200) return 2;
             return 3;
-        }
+        };
 
-        let slidesPerView = getSlidesPerView();
-        let currentStartIndex = 0;
-        let movePercentage = 100 / slidesPerView;
-
-        const autoSlideDuration = 5000;
-        let autoSlideTimer;
-
-        function startAutoSlide() {
-            clearInterval(autoSlideTimer);
-            autoSlideTimer = setInterval(() => {
-                showSlides(currentStartIndex + 1);
-            }, autoSlideDuration);
-        }
-
-        function showSlides(index) {
-            if (index > slides.length - slidesPerView) {
-                currentStartIndex = 0;
-            } else if (index < 0) {
-                currentStartIndex = slides.length - slidesPerView;
+        // Função que move o carrossel para a posição correta
+        const moveCarousel = (newIndex) => {
+            const slidesPerView = getSlidesPerView();
+            
+            // Lógica para o carrossel girar infinitamente
+            if (newIndex >= slides.length - slidesPerView + 1) {
+                currentStartIndex = 0; // Volta para o início
+            } else if (newIndex < 0) {
+                currentStartIndex = slides.length - slidesPerView; // Vai para o fim
             } else {
-                currentStartIndex = index;
+                currentStartIndex = newIndex;
             }
-            const moveAmount = currentStartIndex * movePercentage;
+
+            const moveAmount = currentStartIndex * (100 / slidesPerView);
             carouselContainer.style.transform = `translateX(-${moveAmount}%)`;
-            startAutoSlide();
+        };
+
+        // Função que inicia (ou reinicia) o temporizador do carrossel
+        const startAutoSlide = () => {
+            clearInterval(autoSlideTimer); // Limpa qualquer temporizador antigo
+            autoSlideTimer = setInterval(() => {
+                moveCarousel(currentStartIndex + 1); // Avança para o próximo slide
+            }, autoSlideDuration);
+        };
+        
+        // Eventos dos botões de avançar/voltar
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                moveCarousel(currentStartIndex + 1);
+                startAutoSlide(); // Reinicia o temporizador após clique manual
+            });
         }
 
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                moveCarousel(currentStartIndex - 1);
+                startAutoSlide(); // Reinicia o temporizador após clique manual
+            });
+        }
+        
+        // Pausa o carrossel quando o mouse está sobre ele
+        carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+        // Retoma o carrossel quando o mouse sai
+        carouselContainer.addEventListener('mouseleave', startAutoSlide);
+        
+        // Ajusta o carrossel se o tamanho da janela mudar
         window.addEventListener('resize', () => {
-            const old = slidesPerView;
-            slidesPerView = getSlidesPerView();
-            if (slidesPerView !== old) {
-                movePercentage = 100 / slidesPerView;
-                showSlides(currentStartIndex);
-            }
+            moveCarousel(currentStartIndex); // Reposiciona sem pular
+            startAutoSlide(); // Reinicia o ciclo com as novas dimensões
         });
 
-        showSlides(0);
-
-        if (prevBtn) prevBtn.addEventListener('click', () => showSlides(currentStartIndex - 1));
-        if (nextBtn) nextBtn.addEventListener('click', () => showSlides(currentStartIndex + 1));
-
-        carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
-        carouselContainer.addEventListener('mouseleave', startAutoSlide);
+        // Inicia o carrossel quando a página carrega
+        moveCarousel(0);      // Define a posição inicial
+        startAutoSlide();   // Começa a passar as fotos automaticamente
     }
 });
